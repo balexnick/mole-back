@@ -8,7 +8,7 @@ router.post("/register", register);
 
 router.post("/login", login);
 
-router.get("/score", jwtToken, getScore);
+router.get("/score", getScore);
 
 router.post("/set", jwtToken, setScore);
 
