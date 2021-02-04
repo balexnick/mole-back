@@ -33,7 +33,7 @@ const login = (req, res) => {
       return null
     }
     await User.find({ email }, async (err, user) => {
-      const match = await bCrypt.compare(password, user[0].password);
+      const match = await bCrypt.compare(password, user[0]?.password);
       if (user.length === 0) {
         res
           .status(401)
@@ -72,7 +72,7 @@ const register = (req, res) => {
       res.status(500).json({ message: `Password no less than symbols` });
     }
     await User.find({ email }, (err, user) => {
-      if (user.length !== 0) {
+      if (user?.length !== 0) {
         return res
           .status(409)
           .json({ message: "User already exsist"});
