@@ -22,7 +22,7 @@ const loginSchema = {
 const login = (req, res) => {
   const data = req.body;
   const { email, password } = req.body;
-  Joi.validate(data, loginSchema, async (err, value) => {
+  return Joi.validate(data, loginSchema, async (err, value) => {
     if (err) {
       const str = err.details[0].path[0]
       res.status(500).json({ message: `${validateMessage(str)} is required` });
@@ -56,7 +56,7 @@ const login = (req, res) => {
 const register = (req, res) => {
   const data = req.body;
   const { name, email, password } = req.body;
-  Joi.validate(data, registerSchema, async (err) => {
+  return Joi.validate(data, registerSchema, async (err) => {
     
     if (err) {
       const str = err.details[0].path[0]
