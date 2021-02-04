@@ -7,9 +7,8 @@ require("dotenv").config({
 });
 const app = express();
 
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect('mongodb+srv://admin:1q2w3e4r@cluster0.xo6fl.mongodb.net/mole-db', {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
   useFindAndModify: false
 });
 
