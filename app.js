@@ -2,14 +2,15 @@ const express = require("express");
 const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
+const root = path.join.bind(this, __dirname)
 
-require("dotenv").config({
-  path: ".env"
-});
+require("dotenv").config({path: root('.env')});
+
 const app = express();
 const hostname = "127.0.0.1";
-const uri = 'mongodb+srv://admin:1q2w3e4r@cluster0.xo6fl.mongodb.net/mole-db';//process.env.DATABASE
-mongoose.connect(uri, {
+
+mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
