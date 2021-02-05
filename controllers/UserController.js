@@ -39,7 +39,8 @@ const login = (req, res) => {
           .status(422)
           .send({ message: "User does not exist!" });
       } 
-      let test = bCrypt.compare(password, user[0].password)
+      let test = await bCrypt.compare(password, user[0].password)
+
       if (test) {
         return res.status(200).send({
           token: createToken({ id: user[0]._id }),
