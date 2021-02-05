@@ -12,6 +12,6 @@ router.get("/score", getScore);
 
 router.post("/set", jwtToken, setScore);
 
-router.post("/update/:id", jwtToken, updateScore);
+router.post("/update", jwtToken, updateScore);
 
 module.exports = router;

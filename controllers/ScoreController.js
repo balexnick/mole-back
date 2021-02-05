@@ -4,8 +4,8 @@ const Joi = require("joi");
 const getScore = (req, res) => {
   Score.find()
     .exec()
-    .then(tasks => {
-      res.json(tasks);
+    .then(score => {
+      res.json(score[0]);
     });
 };
 
@@ -23,16 +23,19 @@ const setScore = async (req, res) => {
 };
 
 const updateScore = async (req, res) => {
-  const {count} = req.body;
+  const {count, id} = req.body;
   if(!count) {
     return res.status(422).send({
       message: 'Count is required',
     });
   }
-  await Score.findOneAndUpdate({ _id: req.params.id }, count);
-  res.status(200).json({
+  console.log(Score)
+  await Score.findOneAndUpdate({ _id: id }, req.body);
+
+  res.status(200).send({
     status: "success",
-    count
+    count,
+    _id: id 
   });
 };
 
