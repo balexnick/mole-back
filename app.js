@@ -3,9 +3,10 @@ const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-const root = path.join.bind(this, __dirname)
 
-require("dotenv").config({path: root('.env')});
+require("dotenv").config({
+  path: ".env"
+});
 
 const app = express();
 const hostname = "127.0.0.1";
