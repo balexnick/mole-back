@@ -25,11 +25,11 @@ const login = (req, res) => {
   Joi.validate(data, loginSchema, async (err, value) => {
     if (err) {
       const str = err.details[0].path[0]
-      res.status(500).json({ message: `${validateMessage(str)} is required` });
+      res.status(422).json({ message: `${validateMessage(str)} is required` });
       return null;
     }
     if (!validateEmail(email)) {
-      res.status(500).json({ message: "Email must be valid" });
+      res.status(422).json({ message: "Email must be valid" });
       return null
     }
 
@@ -58,42 +58,47 @@ const register = (req, res) => {
   const data = req.body;
   const { name, email, password } = req.body;
   Joi.validate(data, registerSchema, async (err) => {
-    
+    if(password.length < 6){
+      res.status(500).json({ message: `Password no less than symbols` });
+    }
     if (err) {
       const str = err.details[0].path[0]
       res.status(500).json({ message: `${validateMessage(str)} is required` });
       return null
     }
+
   
     if (!validateEmail(email)) {
       res.status(500).json({ message: "Email must be valid"});
       return null
     }
-    if(password.length < 6){
-      res.status(500).json({ message: `Password no less than symbols` });
-    }
+    let check = false;
     await User.find({ email }, (err, user) => {
       if (user.length !== 0) {
-        return res
-          .status(409)
-          .json({ message: "User already exsist"});
+        check = true;
       }
     });
       
-    let salt = bCrypt.genSaltSync(5);
-    let hash = bCrypt.hashSync(password, salt)
-    const newUser = new User({
-      name,
-      email,
-      password: hash
-    });
-    await newUser.save();
-    return res.status(200).json({
-      auth: "success",
-      token: createToken({ id: newUser.id }),
-      id: newUser.id,
-      message: "Successful registration"
-    });
+    if(check){
+      return res
+      .status(409)
+      .json({ message: "User already exsist"});
+    }else{
+      let salt = bCrypt.genSaltSync(5);
+      let hash = bCrypt.hashSync(password, salt)
+      const newUser = new User({
+        name,
+        email,
+        password: hash
+      });
+      await newUser.save();
+      return res.status(200).json({
+        auth: "success",
+        token: createToken({ id: newUser.id }),
+        id: newUser.id,
+        message: "Successful registration"
+      });
+    }
   });
 };
 
