@@ -11,7 +11,7 @@ require("dotenv").config({
 const app = express();
 const hostname = "127.0.0.1";
 
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(`${process.env.DATABASE}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
@@ -40,6 +40,6 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-const server = app.listen(process.env.PORT || 8080, hostname, () => {
+const server = app.listen(process.env.PORT || 8080, () => {
   console.log(`Express running → PORT ${server.address().port}`);
 });
