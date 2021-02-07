@@ -3,14 +3,14 @@ const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-// const buildPath = path.join(__dirname, 'build');
+const buildPath = path.join(__dirname, 'build');
 
 require("dotenv").config({
   path: ".env"
 });
 
 const app = express();
-// app.use(express.static(buildPath));
+app.use(express.static(buildPath));
 
 mongoose.connect(`${process.env.DATABASE}`, {
   useNewUrlParser: true,
@@ -41,9 +41,9 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname+'/build/index.html'));
+// });
 
 const server = app.listen(process.env.PORT || 8080, () => {
   console.log(`Express running → PORT ${server.address().port}`);
