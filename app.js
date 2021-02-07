@@ -3,13 +3,14 @@ const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
+const buildPath = path.join(__dirname, 'build');
 
 require("dotenv").config({
   path: ".env"
 });
 
 const app = express();
-const hostname = "127.0.0.1";
+app.use(express.static(buildPath));
 
 mongoose.connect(`${process.env.DATABASE}`, {
   useNewUrlParser: true,
