@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3010c6b1.chunk.css",
+    "main.js": "/static/js/main.a689a617.chunk.js",
+    "main.js.map": "/static/js/main.a689a617.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c4e5cde5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c4e5cde5.js.map",
+    "static/css/2.ffda3d49.chunk.css": "/static/css/2.ffda3d49.chunk.css",
+    "static/js/2.eddbbce6.chunk.js": "/static/js/2.eddbbce6.chunk.js",
+    "static/js/2.eddbbce6.chunk.js.map": "/static/js/2.eddbbce6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ffda3d49.chunk.css.map": "/static/css/2.ffda3d49.chunk.css.map",
+    "static/css/main.3010c6b1.chunk.css.map": "/static/css/main.3010c6b1.chunk.css.map",
+    "static/js/2.eddbbce6.chunk.js.LICENSE.txt": "/static/js/2.eddbbce6.chunk.js.LICENSE.txt",
+    "static/media/StartGame.a870fb26.jpg": "/static/media/StartGame.a870fb26.jpg",
+    "static/media/background.bdb7b1db.jpg": "/static/media/background.bdb7b1db.jpg",
+    "static/media/login.30e45ff1.png": "/static/media/login.30e45ff1.png",
+    "static/media/lose.58ffb850.png": "/static/media/lose.58ffb850.png",
+    "static/media/mole.459eb7e9.png": "/static/media/mole.459eb7e9.png",
+    "static/media/register.8c37fd62.png": "/static/media/register.8c37fd62.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4e5cde5.js",
+    "static/css/2.ffda3d49.chunk.css",
+    "static/js/2.eddbbce6.chunk.js",
+    "static/css/main.3010c6b1.chunk.css",
+    "static/js/main.a689a617.chunk.js"
+  ]
+}
