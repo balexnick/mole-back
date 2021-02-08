@@ -60,7 +60,7 @@ const register = (req, res) => {
   const { name, email, password } = req.body;
   Joi.validate(data, registerSchema, async (err) => {
     if(password.length < 6){
-      res.status(500).json({ message: `Password no less than symbols` });
+      res.status(500).json({ message: `Password no less than 6 symbols` });
     }
     if (err) {
       const str = err.details[0].path[0]

@@ -10,7 +10,6 @@ require("dotenv").config({
 });
 
 const app = express();
-app.use(express.static(buildPath));
 
 mongoose.connect(`${process.env.DATABASE}`, {
   useNewUrlParser: true,
@@ -41,9 +40,7 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/build/index.html'));
-// });
+app.use(express.static(buildPath));
 
 const server = app.listen(process.env.PORT || 8080, () => {
   console.log(`Express running → PORT ${server.address().port}`);
